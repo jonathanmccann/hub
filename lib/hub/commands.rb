@@ -420,7 +420,7 @@ module Hub
         #
         # Regex to strip out unnecessary text and just be left with LPS-#####
         #
-        m = /LPS\-[0-9]*/.match(branch)
+        m = /(LPS|SOS)\-[0-9]*/.match(branch)
 
         new_branch_name ||= "pull-request-#{pull_id}-#{m}"
 
