@@ -417,7 +417,7 @@ module Hub
         args.delete new_branch_name
         user, branch = pull_data['head']['label'].split(':', 2)
         abort "Error: #{user}'s fork is not available anymore" unless pull_data['head']['repo']
-        new_branch_name ||= "#{user}-#{branch}"
+        new_branch_name ||= "pull-request-#{pull_id}-#{branch}"
 
         if remotes.include? user
           args.before ['remote', 'set-branches', '--add', user, branch]
