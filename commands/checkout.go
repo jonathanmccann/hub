@@ -88,7 +88,11 @@ func transformCheckoutArgs(args *Args) error {
 	user := headRepo.Owner.Login
 
 	if newBranchName == "" {
-		newBranchName = fmt.Sprintf("%s-%s-%s", "pull-request", id, branch)
+		r, _ := regexp.Compile("(LPS|SOS)-[0-9]*")
+
+		match := r.FindString(branch)
+
+		newBranchName = fmt.Sprintf("%s-%s-%s", "pull-request", id, match)
 	}
 
 	repo, err := github.LocalRepo()
