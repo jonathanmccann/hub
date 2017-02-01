@@ -88,7 +88,7 @@ func transformCheckoutArgs(args *Args) error {
 	user := headRepo.Owner.Login
 
 	if newBranchName == "" {
-		newBranchName = fmt.Sprintf("%s-%s", user, branch)
+		newBranchName = fmt.Sprintf("%s-%s-%s", "pull-request", id, branch)
 	}
 
 	repo, err := github.LocalRepo()
